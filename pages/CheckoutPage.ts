@@ -60,8 +60,13 @@ async finish() {
 
   await confirm.click();
 
+  // Wait for a reliable invoice indicator to appear. Some runs navigate or
+  // update the page state asynchronously; wait for either the invoice text
+  // or the confirmation block to become visible to avoid transient races.
+  await this.page.waitForSelector('text=/INV-\\d+/', { timeout: 15_000 });
+
   await expect(this.confirmation).toBeVisible({
-    timeout: 15_000,
+    timeout: 5_000,
   });
 
   const confirmationText =

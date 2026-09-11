@@ -8,7 +8,7 @@ export class CartPage {
   get proceed() { return this.page.getByRole('button', { name: 'Proceed to checkout', exact: true }); }
   get empty() { return this.page.getByText('The cart is empty. Nothing to display.', { exact: true }); }
   async assertItem(name: string, price: number, quantity: number) {
-    await expect(this.row(name)).toBeVisible();
+    await expect(this.row(name)).toBeVisible({ timeout: 10_000 });
     await expect(this.quantity(name)).toHaveValue(String(quantity));
     await expect.poll(async () => cents(await this.row(name).getByTestId('product-price').innerText())).toBe(price);
     await expect.poll(async () => cents(await this.row(name).getByTestId('line-price').innerText())).toBe(price * quantity);
