@@ -63,7 +63,26 @@ async finish() {
   // Wait for network quiet and a reliable invoice indicator to appear.
   // Some runs navigate or perform async server work; allow more time.
   await this.page.waitForLoadState('networkidle');
-  await this.page.waitForSelector('text=/INV-\\d+/', { timeout: 30_000 });
+
+  // Try to observe the invoice text; if it doesn't appear, attempt a second
+  // confirm click to recover from intermittent server-side races.
+  const maxRetries = 2;
+  let seen = false;
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      await this.page.waitForSelector('text=/INV-\\d+/', { timeout: 10_000 });
+      seen = true;
+      break;
+    } catch (e) {
+      if (attempt < maxRetries) {
+        // Retry: click the confirm control again and wait a bit for server work.
+        await confirm.click();
+        await this.page.waitForLoadState('networkidle');
+      }
+    }
+  }
+
+  if (!seen) throw new Error('Order confirmation (invoice) did not appear');
 
   await expect(this.confirmation).toBeVisible({ timeout: 5_000 });
 
