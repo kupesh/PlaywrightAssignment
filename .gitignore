@@ -1,0 +1,38 @@
+node_modules/
+playwright-report/
+playwright-report-*/
+playwright-report-pdfs/
+test-results/
+blob-report/
+playwright/.auth/
+.env
+.env.*
+!.env.example
+.tools/
+.playwright-mcp/
+*.log
+*.tsbuildinfo
+Playwright_QA_Automation_Take_Home_Toolshop_Open_Ended_3.pdf
+docs/assignment-extracted.txt
+.DS_Store
+Thumbs.db
+
+# Editor and IDE
+.vscode/
+.idea/
+# Build and coverage
+dist/
+build/
+coverage/
+.nyc_output/
+.cache/
+# TypeScript / compiled
+lib/
+out/
+*.map
+# Playwright local state
+.playwright/
+# Other common ignores
+*.tgz
+playwright-report-final/
+playwright-report-pdfs/*

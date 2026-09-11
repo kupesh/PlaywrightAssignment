@@ -1,0 +1,12 @@
+{
+  "firstName": "Quinn",
+  "lastName": "Tester",
+  "birthDate": "1990-01-15",
+  "country": "Sri Lanka",
+  "postalCode": "00000",
+  "houseNumber": "42",
+  "street": "Synthetic Test Road",
+  "city": "Testville",
+  "state": "Test Province",
+  "phone": "0770000000"
+}

@@ -1,0 +1,30 @@
+{
+  "name": "toolshop-playwright-qa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Risk-based Playwright and TypeScript QA coverage for Toolshop",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:chromium": "node ./scripts/run_project_with_pdf.js chromium",
+    "test:firefox": "node ./scripts/run_project_with_pdf.js firefox",
+    "test:webkit": "node ./scripts/run_project_with_pdf.js webkit",
+    "test:mobile": "node ./scripts/run_project_with_pdf.js mobile-chromium",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "matrix:pdf": "node ./scripts/generate_matrix_report.js",
+    "report:pdf": "node ./scripts/generate_report_pdf.js all",
+    "typecheck": "tsc --noEmit",
+    "browsers:install": "playwright install chromium firefox webkit"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/node": "22.20.2",
+    "dotenv": "17.4.2",
+    "typescript": "7.0.2"
+  }
+}

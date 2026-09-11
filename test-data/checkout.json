@@ -1,0 +1,9 @@
+{
+  "country": "Sri Lanka",
+  "postalCode": "00000",
+  "houseNumber": "42",
+  "street": "Synthetic Test Road",
+  "city": "Testville",
+  "state": "Test Province",
+  "paymentMethod": "Cash on Delivery"
+}
